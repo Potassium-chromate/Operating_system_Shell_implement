@@ -1,0 +1,15 @@
+--------------------------------------------------------
+my little shell
+Type program names and argument, and hit enter
+
+The following are build in:
+1. help:	show all build-in function info
+2. cd:  	change directory
+3. echo:	echo the strings to standard output
+4. record:	show last-16 cmds you typed in
+5. replay:	re-execute the cmd shoewd in record
+6. mypid:	find and print process-ids
+7. exit:	exit shell
+
+Use the "man" command for the information ob the other programs.
+--------------------------------------------------------
