@@ -20,15 +20,7 @@ int command_processor(char **args, list_head* head);
 
 int main(int argc, char *argv[])
 {
-	history_count = 0;
-	for (int i = 0; i < MAX_RECORD_NUM; ++i)
-    	history[i] = (char *)malloc(BUF_SIZE * sizeof(char));
-
 	shell();
-
-	for (int i = 0; i < MAX_RECORD_NUM; ++i)
-    	free(history[i]);
-
 	return 0;
 }
 
@@ -39,6 +31,11 @@ void shell(){
 	list_head* head = new_head();
 
 	while(1){
+		//reset args
+		for(int i = 0; i < MAX_ARG_COUNT; i++){
+			args[i] = NULL;
+		}
+		
 		printf(">>> $ ");
 		if (fgets(input, sizeof(input), stdin) == NULL) {
 		    perror("fgets failed");
@@ -55,11 +52,6 @@ void shell(){
 			insert_tail(head, input_cpy);
 		if(command_processor(args, head) < 0)
 			break;
-			
-		//reset args
-		for(int i = 0; i < MAX_ARG_COUNT; i++){
-			args[i] = NULL;
-		}
 	}
 }
 
@@ -67,7 +59,9 @@ int command_processor(char **args, list_head* head){
 	if(strcmp(args[0],"exit") == 0){
     	return -1;
 	}else if(strcmp(args[0],"help") == 0){
-		help();
+		char *help_txt = "help.txt";
+		args[1] = help_txt;
+		cat(args);
 		return 0;
 	}else if(strcmp(args[0],"cd") == 0){
 		cd(args);
@@ -85,6 +79,8 @@ int command_processor(char **args, list_head* head){
 		char *input = replay(args, head);
 		split_input(input, args);
 		command_processor(args, head);
+	}else if(strcmp(args[0],"cat") == 0){
+		cat(args);
 	}else{
 		return 0;
 	}
