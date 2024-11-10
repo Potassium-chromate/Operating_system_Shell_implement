@@ -15,6 +15,7 @@ This project is a custom shell implemented in C, designed as a minimal command-l
   - `replay`
   - `cat`
 - [Background and Pipeline Support](#background-and-pipeline-support)
+- [Command History Management](#command-history-management)
 - [License](#license)
 
 ## Features
@@ -93,5 +94,20 @@ Example:
 ```bash
 ls | grep '.c' | wc -l
 ```
+## Command History Management
+
+This shell project uses a doubly linked list structure, inspired by the Linux kernel's linked list, to store command history. The linked list is implemented with the following structures in `linked_list.h`:
+```c
+struct List_head {
+    struct List_head *prev;
+    struct List_head *next;
+};
+
+typedef struct {
+    char *value;
+    struct List_head list;
+} element_t;
+```
+
 ## License
 This project is licensed under the MIT License.
