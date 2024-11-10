@@ -7,16 +7,14 @@ This project is a custom shell implemented in C, designed as a minimal command-l
 - [Installation](#installation)
 - [Usage](#usage)
 - [Built-in Commands](#built-in-commands)
-  - [`help`](#help)
-  - [`cd`](#cd)
-  - [`pwd`](#pwd)
-  - [`echo`](#echo)
-  - [`record`](#record)
-  - [`replay`](#replay)
-  - [`cat`](#cat)
+  - `help`
+  - `cd`
+  - `pwd`
+  - `echo`
+  - `record`
+  - `replay`
+  - `cat`
 - [Background and Pipeline Support](#background-and-pipeline-support)
-- [Examples](#examples)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Features
